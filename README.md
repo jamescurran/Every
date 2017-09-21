@@ -1,4 +1,4 @@
-# Every - Do something occasional
+# Every - Do something occasionally
 
 Replaces
  

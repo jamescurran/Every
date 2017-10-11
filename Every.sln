@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Every", "Every\Every.csproj", "{8C430FF9-E6BB-4435-92A5-79F9703368F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Every.Test", "Every.Test\Every.Test.csproj", "{7E63E709-C428-48E0-AE2C-355A1A340AEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Every.Test", "Every.Test\Every.Test.csproj", "{7E63E709-C428-48E0-AE2C-355A1A340AEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{10C150E2-746B-4DCE-A5B2-8ECD9CBE4C8E}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

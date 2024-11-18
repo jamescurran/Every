@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace NovelTheory.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class EveryTests
     {
         [TestMethod]
         public void BasicUse()
@@ -11,7 +11,7 @@ namespace NovelTheory.Test
             int countIt = 0;
             int expected = 9;
 
-            var counter = new Every(33, t => ++countIt);
+            var counter = new Every(33, _ => ++countIt);
 
             for(int i =0; i <300; ++i)
                 counter.Next();
@@ -26,7 +26,7 @@ namespace NovelTheory.Test
             int countIt = 0;
             int expected = 9;
 
-            var counter = new Every(33, t => ++countIt);
+            var counter = new Every(33, _ => ++countIt);
 
             for (int i = 0; i < 300; ++i)
                 ++counter;
@@ -42,7 +42,7 @@ namespace NovelTheory.Test
             int countIt = 0;
             int expected = 9;
 
-            var counter = new Every(33, t => ++countIt);
+            var counter = new Every(33, _ => ++countIt);
 
             for (int i = 0; i < 300; ++i)
                 counter++;
@@ -57,7 +57,7 @@ namespace NovelTheory.Test
             int countIt = 0;
             int expected = 10;
 
-            var counter = new Every(33, t => ++countIt);
+            var counter = new Every(33, _ => ++countIt);
 
             for (int i = 0; i < 300; ++i)
                 counter.Next();
@@ -74,7 +74,7 @@ namespace NovelTheory.Test
             int countIt = 0;
             int expected = 300;
 
-            var counter = new Every(1, t => ++countIt);
+            var counter = new Every(1, _ => ++countIt);
 
             for (int i = 0; i < 300; ++i)
                 counter.Next();
@@ -89,7 +89,7 @@ namespace NovelTheory.Test
             int countIt = 0;
             int expected = 0;
 
-            var counter = new Every(301, t => ++countIt);
+            var counter = new Every(301, _ => ++countIt);
 
             for (int i = 0; i < 300; ++i)
                 counter.Next();
@@ -104,7 +104,7 @@ namespace NovelTheory.Test
             int countIt = 0;
             int expected = 1;
 
-            var counter = new Every(300, t => ++countIt);
+            var counter = new Every(300, _ => ++countIt);
 
             for (int i = 0; i < 300; ++i)
                 counter.Next();
@@ -121,7 +121,7 @@ namespace NovelTheory.Test
             int expected1st = 6;
             int expected2nd = 9;
 
-            var counter = new Every(33, t => ++countIt);
+            var counter = new Every(33, _ => ++countIt);
 
             for (int i = 0; i < 200; ++i)
                 counter.Next();
@@ -139,7 +139,7 @@ namespace NovelTheory.Test
             int countIt = 0;
             int expected = 300;
 
-            var counter = new Every(33, t => ++countIt);
+            var counter = new Every(33, _ => ++countIt);
 
             for (int i = 0; i < 300; ++i)
                 counter.Next();
@@ -155,7 +155,7 @@ namespace NovelTheory.Test
             int expected1st = 200;
             int expected2nd = 300;
 
-            var counter = new Every(33, t => ++countIt);
+            var counter = new Every(33, _ => ++countIt);
 
             for (int i = 0; i < 200; ++i)
                 counter.Next();
@@ -176,7 +176,7 @@ namespace NovelTheory.Test
             int expected1st = 200;
             int expected2nd = 100;
 
-            var counter = new Every(33, t => ++countIt);
+            var counter = new Every(33, _ => ++countIt);
 
             for (int i = 0; i < 200; ++i)
                 counter.Next();
@@ -191,5 +191,38 @@ namespace NovelTheory.Test
 
         }
 
-    }
+		[TestMethod]
+		public void Never_Test()
+		{
+			int countIt = 0;
+			int expected = 0;
+
+			var counter = Every.Never;
+
+			for (int i = 0; i < 300; ++i)
+				counter++;
+
+			Assert.AreEqual(expected, countIt);
+
+		}
+
+		[TestMethod]
+		public void Dispose_Test()
+		{
+			int countIt = 0;
+			int expected = 10;
+
+            // action is called upon Dispose, so one more is added to countIt.
+			using (var counter = new Every(33, _ => ++countIt))
+			{
+
+				for (int i = 0; i < 300; ++i)
+					counter.Next();
+			}
+
+			Assert.AreEqual(expected, countIt);
+
+		}
+
+	}
 }
